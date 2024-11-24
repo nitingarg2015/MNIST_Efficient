@@ -1,3 +1,4 @@
+[![ML Training Pipeline](https://github.com/nitingarg2015/MNIST_improved_trainer/actions/workflows/ml-pipeline.yml/badge.svg)](https://github.com/nitingarg2015/MNIST_improved_trainer/actions/workflows/ml-pipeline.yml)
 ## Objective
 
 Make a MNIST based model that has following characteristics:
@@ -42,4 +43,8 @@ Have used BN, Dropout,
         kernel_size=3,                         # Blur kernel size
         sigma=(0.01, 0.02)                       # Random sigma for blur
         )
+## Github Actions
+![alt text](image-2.png)
 
+## Github Actions Test Status
+![alt text](image-3.png)
