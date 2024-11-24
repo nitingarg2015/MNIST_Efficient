@@ -7,12 +7,13 @@ from torch import optim
 import torch
 from datetime import datetime
 
-try:
-    from model import MNISTModel
-    from training_manager import TrainingManager
-except ImportError:
-    from src.model import MNISTModel
-    from src.training_manager import TrainingManager
+# Add the project root directory to Python path
+project_root = str(Path(__file__).parent.parent)
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+from src.model import MNISTModel
+from src.training_manager import TrainingManager
 
 def train_test():
     model = MNISTModel(dropout_rate=0.1)
