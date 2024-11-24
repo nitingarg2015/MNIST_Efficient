@@ -1,21 +1,4 @@
-# Get the absolute path to the project root
-# project_root = Path(__file__).parent.absolute()
-# print(f"Project root: {project_root}")
 
-# Add to Python path if not already there
-# if str(project_root) not in sys.path:
-#     sys.path.insert(0, str(project_root))
-#     print(f"Added {project_root} to Python path")
-
-# try:
-#     from src.model import MNISTModel
-#     from src.training_manager import TrainingManager
-#     print("Successfully imported modules")
-# except ImportError as e:
-#     print(f"Import error: {e}")
-#     print(f"Current sys.path: {sys.path}")
-#     print(f"Contents of src directory: {os.listdir(os.path.join(project_root, 'src'))}")
-#     raise
 import os
 import sys
 from pathlib import Path
@@ -23,8 +6,13 @@ from torch.optim.lr_scheduler import StepLR # Import your choice of scheduler he
 from torch import optim
 import torch
 from datetime import datetime
-from .model import MNISTModel
-from .training_manager import TrainingManager
+
+try:
+    from model import MNISTModel
+    from training_manager import TrainingManager
+except ImportError:
+    from src.model import MNISTModel
+    from src.training_manager import TrainingManager
 
 def train_test():
     model = MNISTModel(dropout_rate=0.1)

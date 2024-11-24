@@ -4,8 +4,13 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import torch
 import pytest
-from src.model import MNISTModel
-from src.utils import count_parameters
+try:
+    from src.model import MNISTModel
+    from src.utils import count_parameters
+except ImportError:
+    # Fallback for different project structure
+    from model import MNISTModel
+    from utils import count_parameters
 
 def test_model_architecture():
     model = MNISTModel()
