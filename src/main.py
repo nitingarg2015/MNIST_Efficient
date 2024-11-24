@@ -29,7 +29,7 @@ def train_test():
     accuracy_counter = 0
     delta = 0.002
 
-    for epoch in range(1):
+    for epoch in range(1,21):
         print("EPOCH:", epoch, "Learning Rate: ", optimizer.param_groups[0]["lr"])
 
         training_manager.train(optimizer)
