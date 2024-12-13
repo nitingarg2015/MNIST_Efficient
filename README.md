@@ -19,4 +19,4 @@ Make a MNIST based model that has following characteristics:
 ![alt text](iteration-V4logs.bmp)
 
 ## Sagemaker Test Logs  
-![alt text](sagemaker-V4.bmp)
+![alt text](sagemakerV4.bmp)
