@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import torch
 import pytest
 try:
-    from src.model import MNISTModel
+    from MNIST_improved_efficient.src.model import MNISTModel
     from src.utils import count_parameters
 except ImportError:
     # Fallback for different project structure

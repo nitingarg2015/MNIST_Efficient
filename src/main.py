@@ -12,14 +12,14 @@ project_root = str(Path(__file__).parent.parent)
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-from src.model import MNISTModel
+from src.modelV1 import MNISTModel
 from src.training_manager import TrainingManager
 
 def train_test():
     model = MNISTModel(dropout_rate=0.1)
 
     optimizer = optim.Adam(model.parameters(), lr=0.01)
-    scheduler = StepLR(optimizer, step_size=5, gamma=0.1)
+    scheduler = StepLR(optimizer, step_size=8, gamma=0.1)
 
     training_manager = TrainingManager(model)
     patience = 3
@@ -37,22 +37,23 @@ def train_test():
         scheduler.step()
 
         # Early stopping logic
-        if test_loss < best_loss - delta:
-            best_loss = test_loss
-            patience_counter = 0
-            best_model_state = model.state_dict().copy()
+        # if test_loss < best_loss - delta:
+        #     best_loss = test_loss
+        #     patience_counter = 0
+        #     best_model_state = model.state_dict().copy()
 
-        else:
-            patience_counter += 1
-            if patience_counter >= patience:
-                print(f"Early stopping triggered after {epoch} epochs")
-                model.load_state_dict(best_model_state)  # Restore best model
-                break
+        # else:
+        #     patience_counter += 1
+        #     if patience_counter >= patience:
+        #         print(f"Early stopping triggered after {epoch} epochs")
+        #         model.load_state_dict(best_model_state)  # Restore best model
+        #         break
         
         if test_accuracy > target_test_accuracy:
             accuracy_counter += 1
             if accuracy_counter >= patience:
                 print(f"Early stopping triggered after {epoch} epochs")
+                best_model_state = model.state_dict().copy()
                 model.load_state_dict(best_model_state)  # Restore best model
                 break
         else:
